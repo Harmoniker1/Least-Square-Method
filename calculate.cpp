@@ -79,14 +79,14 @@ int main() {
                   try { indD = splitString(indVars); break; }
                   catch (runtime_error e) { cout << "Wrong input, please try again:\n"; continue; }
             }
-            cout << "Please input the values of the dependent variable (y) in the same way:\n";
+            cout << "\nPlease input the values of the dependent variable (y) in the same way:\n";
             while (getline(cin >> ws, depVars)) {
                   try { depD = splitString(depVars); break; }
                   catch (runtime_error e) { cout << "Wrong input, please try again:\n"; continue; }
             }
 
             if (indD.size() != depD.size()) {
-                  cout << "Two group of values aren't of the same amount, please try again from the start.\n";
+                  cout << "\nTwo group of values aren't of the same amount, please try again from the start.\n";
                   continue;
             }
             else
@@ -98,13 +98,13 @@ int main() {
 
       double a1, a0;
       if (indSquareBar - pow(indBar, 2) == 0) {
-            cout << "The values of the independent variable are illegal.\n";
+            cout << "\nThe values of the independent variable are illegal.\n";
             return 1;
       }
       a1 = (indDepBar - indBar * depBar) / (indSquareBar - pow(indBar, 2));
       a0 = depBar - a1 * indBar;
 
-      cout << "The relation between x and y is: y = " << a0 << " + " << a1 << " * x.\n\n";
+      cout << "\nThe relation between x and y is: y = " << a0 << " + " << a1 << " * x.\n\n";
       cout << setw(15)  << "Actual y" << setw(15) << "Calculated y" << setw(15) << "x" << "\n";
       for (size_t i = 0; i < indD.size(); ++i)
             cout << setw(15) << depD[i] << setw(15) << a0 + a1 * indD[i] << setw(15) << indD[i] << "\n";
