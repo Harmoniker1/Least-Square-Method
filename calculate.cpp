@@ -54,15 +54,15 @@ double squareBar(vector<double> vec) {
 }
 
 // ----------------------------------------
-// barTimesBar
+// xyBar
 // ----------------------------------------
 
-double barTimesBar(vector<double> vec1, vector<double> vec2) {
-      double barTimesBar = 0.0;
+double xyBar(vector<double> vec1, vector<double> vec2) {
+      double xyBar = 0.0;
       for (size_t i = 0; i < vec1.size(); ++i)
-            barTimesBar += vec1[i] * vec2[i];
-      barTimesBar /= vec1.size();
-      return barTimesBar;
+            xyBar += vec1[i] * vec2[i];
+      xyBar /= vec1.size();
+      return xyBar;
 }
 
 // ----------------------------------------
@@ -94,7 +94,7 @@ int main() {
       }
 
       double indBar, depBar, indDepBar, indSquareBar;
-      indBar = bar(indD); depBar = bar(depD); indDepBar = barTimesBar(indD, depD); indSquareBar = squareBar(indD);
+      indBar = bar(indD); depBar = bar(depD); indDepBar = xyBar(indD, depD); indSquareBar = squareBar(indD);
 
       double a1, a0;
       if (indSquareBar - pow(indBar, 2) == 0) {
