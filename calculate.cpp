@@ -77,16 +77,20 @@ int main() {
             cout << "Please input the values of the independent variable (x) one by one, with a space between each two:\n";
             while (getline(cin >> ws, indVars)) {
                   try { indD = splitString(indVars); break; }
-                  catch (runtime_error e) { cout << "Wrong input, please try again:\n"; continue; }
+                  catch (invalid_argument e) { cout << "\nWrong input, please try again.\nMake sure there's only one space between two elements.\n"; continue; }
             }
             cout << "\nPlease input the values of the dependent variable (y) in the same way:\n";
             while (getline(cin >> ws, depVars)) {
                   try { depD = splitString(depVars); break; }
-                  catch (runtime_error e) { cout << "Wrong input, please try again:\n"; continue; }
+                  catch (invalid_argument e) { cout << "\nWrong input, please try again.\nMake sure there's only one space between two elements.\n"; continue; }
             }
 
             if (indD.size() != depD.size()) {
                   cout << "\nTwo group of values aren't of the same amount, please try again from the start.\n";
+                  continue;
+            }
+            if (indD.size() == 1) {
+                  cout << "\nOne pair of values isn't enough to define a line, please try again from the start.\n";
                   continue;
             }
             else
@@ -118,7 +122,7 @@ int main() {
       // uncertainty of a1
       double uncertainty = a1 * sqrt((1 / pow(coc, 2) - 1) / (indD.size() - 2));
 
-      cout << "\nThe standard deviation of the scope is " << uncertainty << ".\n";
+      cout << "\nThe uncertainty of the scope is " << uncertainty << ".\n";
 
       return 0;
 }
