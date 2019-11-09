@@ -93,8 +93,8 @@ int main() {
                   break;
       }
 
-      double indBar, depBar, indDepBar, indSquareBar;
-      indBar = bar(indD); depBar = bar(depD); indDepBar = xyBar(indD, depD); indSquareBar = squareBar(indD);
+      double indBar, depBar, indDepBar, indSquareBar, depSquareBar;
+      indBar = bar(indD); depBar = bar(depD); indDepBar = xyBar(indD, depD); indSquareBar = squareBar(indD); depSquareBar = squareBar(depD);
 
       double a1, a0;
       if (indSquareBar - pow(indBar, 2) == 0) {
@@ -104,10 +104,21 @@ int main() {
       a1 = (indDepBar - indBar * depBar) / (indSquareBar - pow(indBar, 2));
       a0 = depBar - a1 * indBar;
 
-      cout << "\nThe relation between x and y is: y = " << a0 << " + " << a1 << " * x.\n\n";
+      if (a1 >= 0)
+            cout << "\nThe relation between x and y is: y = " << a0 << " + " << a1 << " * x.\n\n";
+      else
+            cout << "\nThe relation between x and y is: y = " << a0 << " - " << - a1 << " * x.\n\n";
+
       cout << setw(15)  << "Actual y" << setw(15) << "Calculated y" << setw(15) << "x" << "\n";
       for (size_t i = 0; i < indD.size(); ++i)
             cout << setw(15) << depD[i] << setw(15) << a0 + a1 * indD[i] << setw(15) << indD[i] << "\n";
+
+      // coefficient of correlation
+      double coc = (indDepBar - indBar * depBar) / sqrt((indSquareBar - pow(indBar, 2)) * (depSquareBar - pow(depBar, 2)));
+      // uncertainty of a1
+      double uncertainty = a1 * sqrt((1 / pow(coc, 2) - 1) / (indD.size() - 2));
+
+      cout << "\nThe standard deviation of the scope is " << uncertainty << ".\n";
 
       return 0;
 }
