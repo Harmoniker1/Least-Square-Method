@@ -124,5 +124,6 @@ int main() {
 
       cout << "\nThe uncertainty of the scope is " << uncertainty << ".\n";
 
-      return 0;
+      char a;
+      cin >> a;      // don't close window
 }
