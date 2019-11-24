@@ -103,6 +103,9 @@ int main() {
       double a1, a0;
       if (indSquareBar - pow(indBar, 2) == 0) {
             cout << "\nThe values of the independent variable are illegal.\n";
+
+            char a;
+            cin >> a;      // don't close window
             return 1;
       }
       a1 = (indDepBar - indBar * depBar) / (indSquareBar - pow(indBar, 2));
@@ -126,4 +129,5 @@ int main() {
 
       char a;
       cin >> a;      // don't close window
+      return 0;
 }
